@@ -2,7 +2,6 @@
  * Adicionando a paleta de cores.
  */
 const main = document.getElementById('main-container');
-const footer = document.getElementById('footer-container');
 
 document.body.addEventListener('click', (evt) => {
   console.log(evt.target.style.backgroundColor);
@@ -29,7 +28,6 @@ const containerTable = document.createElement('div');
 containerTable.classList.add('container-table');
 containerTable.id = 'pixel-board';
 main.appendChild(containerTable);
-
 
 // Criando Randomicamente as cores para a paleta de cores.
 const randomColor = (input) => {
@@ -60,16 +58,16 @@ const createTable = () => {
   for (let linha = 1; linha <= 5; linha += 1) {
     const createItemLine = document.createElement('div');
     createItemLine.classList.add('pixel');
-    createItemLine.style.border = '2px solid black';
-    createItemLine.style.width = '6vw';
-    createItemLine.style.height = '9vh';
+    createItemLine.style.border = '1px solid black';
+    createItemLine.style.width = '40px';
+    createItemLine.style.height = '40px';
     containerTable.appendChild(createItemLine);
     for (let coluna = 1; coluna < 5; coluna += 1) {
       const createItemCol = document.createElement('div');
       createItemCol.classList.add('pixel');
-      createItemCol.style.border = '2px solid black';
-      createItemCol.style.width = '6vw';
-      createItemCol.style.height = '9vh';
+      createItemCol.style.border = '1px solid black';
+      createItemCol.style.width = '40px';
+      createItemCol.style.height = '40px';
       containerTable.appendChild(createItemCol);
     }
   }

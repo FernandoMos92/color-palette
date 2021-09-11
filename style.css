@@ -5,57 +5,48 @@ html {
   margin: 0;
   padding: 0;
 }
+
 body {
   width: 100%;
   height: 100%;
 }
+
 header {
   margin-bottom: 5vh;
 }
-header h1,
-header h3 {
+
+header h1 , header h3 {
   text-align: center;
   letter-spacing: 0.1em;
   transform: perspective(100px) rotateX(20deg);
   margin-bottom: 10px;
-  color: #ffd700;
+  color: gold;
   text-shadow: 1px 2px 1px black;
 }
+
 header h3 {
   color: black;
   text-shadow: 1px 2px 1px white;
 }
+
 #main-container #color-palette {
   display: flex;
   justify-content: space-evenly;
 }
+
 .color {
   width: 6vw;
   height: 9vh;
   padding: 5px;
   border-radius: 15%;
-  border: 2px solid black;
+  border: 1px solid black;
   box-shadow: 1px 1px 9px green;
   transition: all 0.2s linear;
 }
+
 .color:hover {
   transform: translateY(-0.5vw) scaleX(0.7);
   cursor: pointer;
-}
-
-
-#main-container > div.container-table > div:nth-child(1){
-  border-radius: 5px 0 0 0;
-}
-
-#main-container > div.container-table > div:nth-child(5){
-  border-radius: 0 5px 0 0;
-}
-#main-container > div.container-table > div:nth-child(21){
-  border-radius: 0 0 0 5px;
-}
-#main-container > div.container-table > div:nth-child(25){
-  border-radius: 0 0 5px 0;
 }
 
 .container-table {
@@ -67,27 +58,35 @@ header h3 {
   margin-left: 35%;
 }
 
-.btn-random, .btn-clear{
-  width: 60px;
-  height:60px;
-  border-radius:50%;
-  background-color: rgb(255, 0, 0);
-  color: rgb(255, 255, 255);
+.btn-random , .btn-clear {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
   text-transform: uppercase;
   font-size: 10px;
-  font-weight: bold;
+  font-weight: 900;
   transition: all 0.1s linear;
   padding: 5px;
 }
-.btn-clear{
-  background-color: rgb(255, 255, 255);
-  color: rgb(0, 0, 0);
+
+.btn-random {
+  margin-left: 20%;
 }
 
-.btn-random:hover, .btn-clear:hover{
+.btn-clear {
+  background-color: white;
+  color: black;
+  margin-left: 46%;
+  margin-top: 10px;
+}
+
+.btn-random:hover , .btn-clear:hover {
   transform: scaleX(0.9) scaleY(0.8);
 }
-#footer-container{
+
+#footer-container {
   display: flex;
   justify-content: space-around;
 }

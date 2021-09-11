@@ -2,6 +2,11 @@
  * Adicionando a paleta de cores.
  */
 const main = document.getElementById('main-container');
+const footer = document.getElementById('footer-container');
+
+document.body.addEventListener('click', (evt) => {
+  console.log(evt.target.style.backgroundColor);
+});
 
 const paletaDeCores = document.createElement('div');
 paletaDeCores.id = 'color-palette';
@@ -11,6 +16,19 @@ const containerTable = document.createElement('div');
 containerTable.classList.add('container-table');
 main.appendChild(containerTable);
 
+// criando botão de random color
+const btnRandom = document.createElement('button');
+btnRandom.innerText = 'Random Color';
+btnRandom.classList.add('btn-random');
+btnRandom.addEventListener('click', () => {
+  document.location.reload(true);
+});
+footer.appendChild(btnRandom);
+// criando botão de Limpar
+const btnClear = document.createElement('button');
+btnClear.innerText = 'Clear';
+btnClear.classList.add('btn-clear');
+footer.appendChild(btnClear);
 // Criando Randomicamente as cores para a paleta de cores.
 const randomColor = (input) => {
   for (let index = 0; index < input; index += 1) {

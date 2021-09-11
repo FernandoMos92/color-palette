@@ -1,0 +1,66 @@
+html {
+  max-width: 100vw;
+  max-height: 100vh;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  width: 100%;
+  height: 100%;
+}
+header {
+  margin-bottom: 5vh;
+}
+header h1,
+header h3 {
+  text-align: center;
+  letter-spacing: 0.1em;
+  transform: perspective(100px) rotateX(20deg);
+  margin-bottom: 10px;
+  color: #ffd700;
+  text-shadow: 1px 2px 1px black;
+}
+header h3 {
+  color: black;
+  text-shadow: 1px 2px 1px white;
+}
+#main-container #color-palette {
+  display: flex;
+  justify-content: space-evenly;
+}
+.color {
+  width: 6vw;
+  height: 9vh;
+  padding: 5px;
+  border-radius: 15%;
+  border: 2px solid white;
+  box-shadow: 1px 3px 4px black;
+  transition: all 0.2s linear;
+}
+.color:hover {
+  transform: translateY(-0.5vw) scaleX(0.7);
+  cursor: pointer;
+}
+
+
+#main-container > div.container-table > div:nth-child(1){
+  border-radius: 5px 0 0 0;
+}
+
+#main-container > div.container-table > div:nth-child(5){
+  border-radius: 0 5px 0 0;
+}
+#main-container > div.container-table > div:nth-child(30){
+  border-radius: 0 0 5px 0;
+}
+#main-container > div.container-table > div:nth-child(26){
+  border-radius: 0 0 0 5px;
+}
+.container-table {
+  display: flex;
+  flex-wrap: wrap;
+  width: 35%;
+  margin-top: 3%;
+  margin-left: 35%;
+}

@@ -61,6 +61,7 @@ const createTable = () => {
     createItemLine.style.border = '1px solid black';
     createItemLine.style.width = '40px';
     createItemLine.style.height = '40px';
+    createItemLine.style.background = 'rgb(255, 255, 255)';
     containerTable.appendChild(createItemLine);
     for (let coluna = 1; coluna < 5; coluna += 1) {
       const createItemCol = document.createElement('div');
@@ -68,6 +69,7 @@ const createTable = () => {
       createItemCol.style.border = '1px solid black';
       createItemCol.style.width = '40px';
       createItemCol.style.height = '40px';
+      createItemLine.style.background = 'rgb(255, 255, 255)';
       containerTable.appendChild(createItemCol);
     }
   }

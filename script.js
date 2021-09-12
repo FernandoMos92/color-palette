@@ -7,15 +7,21 @@ const paletaDeCores = document.createElement('div');
 paletaDeCores.id = 'color-palette';
 main.appendChild(paletaDeCores);
 
+const containerTable = document.createElement('div');
+containerTable.classList.add('container-table');
+containerTable.id = 'pixel-board';
+
 // criando botão de Limpar
 const btnClear = document.createElement('button');
 btnClear.innerText = 'Limpar';
 btnClear.classList.add('btn-clear');
+btnClear.addEventListener('click', () => {
+  const tilesList = containerTable.children;
+  for (let index = 0; index < tilesList.length; index += 1) {
+    tilesList[index].style.backgroundColor = '#FFFFFF';
+  }
+});
 main.appendChild(btnClear);
-
-const containerTable = document.createElement('div');
-containerTable.classList.add('container-table');
-containerTable.id = 'pixel-board';
 main.appendChild(containerTable);
 
 // Criando Randomicamente as cores para a paleta de cores.
@@ -49,8 +55,8 @@ paletaDeCores.addEventListener('click', (evt) => {
   storageColor = evt.target.style.backgroundColor;
   const classSelected = evt.target.children;
   console.log(classSelected);
-  // eslint-disable-next-line no-restricted-syntax
-  for (const item of classSelected) {
+  for (let index = 0; index < classSelected.length; index += 1) {
+    const item = classSelected[index];
     if (item.style.backgroundColor === storageColor) {
       item.classList.add('selected');
     } else {

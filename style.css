@@ -32,6 +32,7 @@ header h3 {
 #main-container #color-palette {
   display: flex;
   justify-content: space-evenly;
+
 }
 
 .color {
@@ -49,40 +50,35 @@ header h3 {
   cursor: pointer;
 }
 
+.pixel {
+  border: 1px solid black;
+  width: 40px;
+  height: 40px;
+  background: white;
+}
+
 .container-table {
   display: flex;
   flex-wrap: wrap;
-  width: 35%;
+  width: 220px;
   padding: 0;
+  margin-inline: auto;
   margin-top: 3%;
-  margin-left: 35%;
-}
-
-.btn-random , .btn-clear {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background-color: red;
-  color: white;
-  text-transform: uppercase;
-  font-size: 10px;
-  font-weight: 900;
-  transition: all 0.1s linear;
-  padding: 5px;
-}
-
-.btn-random {
-  margin-left: 20%;
 }
 
 .btn-clear {
+  width: 70px;
+  height: 70px;
+  border-radius: 5%;
+  margin-top: 90px;
   background-color: white;
   color: black;
-  margin-left: 46%;
-  margin-top: 10px;
+  text-transform: uppercase;
+  font-size: 10px;
+  transition: all 0.1s linear;
 }
 
-.btn-random:hover , .btn-clear:hover {
+.btn-clear:hover {
   transform: scaleX(0.9) scaleY(0.8);
 }
 

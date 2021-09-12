@@ -3,21 +3,10 @@
  */
 const main = document.getElementById('main-container');
 
-document.body.addEventListener('click', (evt) => {
-  console.log(evt.target.style.backgroundColor);
-});
-
 const paletaDeCores = document.createElement('div');
 paletaDeCores.id = 'color-palette';
 main.appendChild(paletaDeCores);
-// criando botão de random color
-const btnRandom = document.createElement('button');
-btnRandom.innerText = 'Cor aleatória';
-btnRandom.classList.add('btn-random');
-btnRandom.addEventListener('click', () => {
-  document.location.reload(true);
-});
-main.appendChild(btnRandom);
+
 // criando botão de Limpar
 const btnClear = document.createElement('button');
 btnClear.innerText = 'Limpar';
@@ -46,6 +35,7 @@ const storage = (input) => {
   if (input !== 0 && input !== String) {
     const divColorFirst = document.createElement('div');
     divColorFirst.classList.add('color');
+    divColorFirst.classList.add('selected');
     divColorFirst.style.backgroundColor = 'RGB(0, 0, 0)';
     paletaDeCores.appendChild(divColorFirst);
     randomColor(input);
@@ -53,25 +43,33 @@ const storage = (input) => {
 };
 storage(3);
 
+let storageColor;
+paletaDeCores.addEventListener('click', (evt) => {
+  // console.log(evt.target);
+  storageColor = evt.target.style.backgroundColor;
+  const classSelected = evt.target.children;
+  console.log(classSelected);
+  // eslint-disable-next-line no-restricted-syntax
+  for (const item of classSelected) {
+    if (item.style.backgroundColor === storageColor) {
+      item.classList.add('selected');
+    } else {
+      item.classList.remove('selected');
+    }
+  }
+});
+
+const changeColor = (e) => {
+  e.target.style.backgroundColor = storageColor;
+};
+
 // Criando a tabela para pixel art.
 const createTable = () => {
-  for (let linha = 1; linha <= 5; linha += 1) {
-    const createItemLine = document.createElement('div');
-    createItemLine.classList.add('pixel');
-    createItemLine.style.border = '1px solid black';
-    createItemLine.style.width = '40px';
-    createItemLine.style.height = '40px';
-    createItemLine.style.background = 'rgb(255, 255, 255)';
-    containerTable.appendChild(createItemLine);
-    for (let coluna = 1; coluna < 5; coluna += 1) {
-      const createItemCol = document.createElement('div');
-      createItemCol.classList.add('pixel');
-      createItemCol.style.border = '1px solid black';
-      createItemCol.style.width = '40px';
-      createItemCol.style.height = '40px';
-      createItemLine.style.background = 'rgb(255, 255, 255)';
-      containerTable.appendChild(createItemCol);
-    }
+  for (let linha = 1; linha <= 25; linha += 1) {
+    const createItem = document.createElement('div');
+    createItem.classList.add('pixel');
+    createItem.addEventListener('click', changeColor);
+    containerTable.appendChild(createItem);
   }
 };
 createTable();

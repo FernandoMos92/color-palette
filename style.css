@@ -67,10 +67,11 @@ header h3 {
 }
 
 .btn-clear {
-  display:inline;
+  display: block;
   width: 90px;
   height: 20px;
-  border-radius: 5%;
+  border-radius: 5px;
+  margin-top: 20px;
   margin-inline: auto;
   background-color: white;
   color: black;

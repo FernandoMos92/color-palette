@@ -15,6 +15,7 @@ containerTable.id = 'pixel-board';
 const btnClear = document.createElement('button');
 btnClear.innerText = 'Limpar';
 btnClear.classList.add('btn-clear');
+btnClear.id = 'clear-board';
 btnClear.addEventListener('click', () => {
   const tilesList = containerTable.children;
   for (let index = 0; index < tilesList.length; index += 1) {
@@ -37,30 +38,34 @@ const randomColor = (input) => {
   }
 };
 
-const storage = (input) => {
-  if (input !== 0 && input !== String) {
-    const divColorFirst = document.createElement('div');
-    divColorFirst.classList.add('color');
-    divColorFirst.classList.add('selected');
-    divColorFirst.style.backgroundColor = 'RGB(0, 0, 0)';
-    paletaDeCores.appendChild(divColorFirst);
-    randomColor(input);
-  }
+window.onload = () => {
+  const storage = (input) => {
+    if (input !== 0 && input !== String) {
+      const divColorFirst = document.createElement('div');
+      divColorFirst.classList.add('color');
+      divColorFirst.classList.add('selected');
+      divColorFirst.style.backgroundColor = 'rgb(0, 0, 0)';
+      paletaDeCores.appendChild(divColorFirst);
+      randomColor(input);
+    }
+  };
+  storage(3);
 };
-storage(3);
 
-let storageColor;
+let storageColor = 'rgb(0, 0, 0)';
 paletaDeCores.addEventListener('click', (evt) => {
-  // console.log(evt.target);
   storageColor = evt.target.style.backgroundColor;
-  const classSelected = evt.target.children;
-  console.log(classSelected);
+  const classSelected = evt.currentTarget.children;
+  console.dir(classSelected[1].className);
   for (let index = 0; index < classSelected.length; index += 1) {
     const item = classSelected[index];
-    if (item.style.backgroundColor === storageColor) {
-      item.classList.add('selected');
-    } else {
+    if (item.className === 'color selected') {
       item.classList.remove('selected');
+    }
+    if (item.style.backgroundColor === storageColor) {
+      if (classSelected[index] !== 'color selected') {
+        item.classList.add('selected');
+      }
     }
   }
 });

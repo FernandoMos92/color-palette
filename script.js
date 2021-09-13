@@ -7,9 +7,9 @@ const paletaDeCores = document.createElement('div');
 paletaDeCores.id = 'color-palette';
 main.appendChild(paletaDeCores);
 
-const containerTable = document.createElement('div');
-containerTable.classList.add('container-table');
-containerTable.id = 'pixel-board';
+const containerBoard = document.createElement('div');
+containerBoard.classList.add('container-board');
+containerBoard.id = 'pixel-board';
 
 // criando botão de Limpar
 const btnClear = document.createElement('button');
@@ -17,13 +17,13 @@ btnClear.innerText = 'Limpar';
 btnClear.classList.add('btn-clear');
 btnClear.id = 'clear-board';
 btnClear.addEventListener('click', () => {
-  const tilesList = containerTable.children;
+  const tilesList = containerBoard.children;
   for (let index = 0; index < tilesList.length; index += 1) {
     tilesList[index].style.backgroundColor = '#FFFFFF';
   }
 });
 main.appendChild(btnClear);
-main.appendChild(containerTable);
+main.appendChild(containerBoard);
 
 // Criando Randomicamente as cores para a paleta de cores.
 const randomColor = (input) => {
@@ -38,20 +38,7 @@ const randomColor = (input) => {
   }
 };
 
-window.onload = () => {
-  const storage = (input) => {
-    if (input !== 0 && input !== String) {
-      const divColorFirst = document.createElement('div');
-      divColorFirst.classList.add('color');
-      divColorFirst.classList.add('selected');
-      divColorFirst.style.backgroundColor = 'rgb(0, 0, 0)';
-      paletaDeCores.appendChild(divColorFirst);
-      randomColor(input);
-    }
-  };
-  storage(3);
-};
-
+// Adicionando e removendo a classe Selected
 let storageColor = 'rgb(0, 0, 0)';
 paletaDeCores.addEventListener('click', (evt) => {
   storageColor = evt.target.style.backgroundColor;
@@ -72,13 +59,55 @@ const changeColor = (e) => {
   e.target.style.backgroundColor = storageColor;
 };
 
-// Criando a tabela para pixel art.
-const createTable = () => {
-  for (let linha = 1; linha <= 25; linha += 1) {
+// Criar o board dinamicamente para
+const dinamicBoard = (input) => {
+  const pixelDefault = 42;
+  for (let linha = 1; linha <= (input * input); linha += 1) {
     const createItem = document.createElement('div');
     createItem.classList.add('pixel');
     createItem.addEventListener('click', changeColor);
-    containerTable.appendChild(createItem);
+    containerBoard.appendChild(createItem);
+    containerBoard.style.width = `${pixelDefault * input}px`;
   }
 };
-createTable();
+window.onload = () => {
+  dinamicBoard(5);
+  const storage = (input) => {
+    if (input !== 0 && input !== String) {
+      const divColorFirst = document.createElement('div');
+      divColorFirst.classList.add('color');
+      divColorFirst.classList.add('selected');
+      divColorFirst.style.backgroundColor = 'rgb(0, 0, 0)';
+      paletaDeCores.appendChild(divColorFirst);
+      randomColor(input);
+    }
+  };
+  storage(3);
+};
+
+// Criando o input de entrada para o tamanho -> id denominado board-size.
+// e o botão deve ter o id denominado generate-board
+
+const inputSize = document.createElement('input');
+const btnVQV = document.createElement('button');
+const containerInput = document.createElement('div');
+inputSize.id = 'board-size';
+inputSize.type = 'number';
+inputSize.min = 5;
+inputSize.max = 50;
+btnVQV.id = 'generate-board';
+btnVQV.innerText = 'VQV';
+
+inputSize.style.borderRadius = '5px 0 0 5px';
+btnVQV.style.borderRadius = '0 5px 5px 0';
+
+containerInput.appendChild(inputSize);
+containerInput.appendChild(btnVQV);
+containerInput.style.marginLeft = '46%';
+containerInput.style.marginRigth = '45%';
+
+main.insertBefore(containerInput, containerBoard);
+
+btnVQV.addEventListener('click', () => {
+  dinamicBoard(inputSize.valueAsNumber);
+});

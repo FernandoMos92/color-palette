@@ -62,7 +62,7 @@ const changeColor = (e) => {
 // Criar o board dinamicamente para
 const dinamicBoard = (input) => {
   const pixelDefault = 42;
-  for (let linha = 1; linha <= (input * input); linha += 1) {
+  for (let index = 1; index <= input * input; index += 1) {
     const createItem = document.createElement('div');
     createItem.classList.add('pixel');
     createItem.addEventListener('click', changeColor);
@@ -70,6 +70,20 @@ const dinamicBoard = (input) => {
     containerBoard.style.width = `${pixelDefault * input}px`;
   }
 };
+// validando entradas
+const validCreate = (input) => {
+  if (input === '') {
+    return alert('Board inválido!');
+  }
+  if (input <= 5) {
+    dinamicBoard(5);
+  } else if (input > 50) {
+    dinamicBoard(50);
+  } else {
+    dinamicBoard(input);
+  }
+};
+// Inicializando a board!
 window.onload = () => {
   dinamicBoard(5);
   const storage = (input) => {
@@ -93,7 +107,7 @@ const btnVQV = document.createElement('button');
 const containerInput = document.createElement('div');
 inputSize.id = 'board-size';
 inputSize.type = 'number';
-inputSize.min = 5;
+inputSize.min = 1;
 inputSize.max = 50;
 btnVQV.id = 'generate-board';
 btnVQV.innerText = 'VQV';
@@ -109,5 +123,8 @@ containerInput.style.marginRigth = '45%';
 main.insertBefore(containerInput, containerBoard);
 
 btnVQV.addEventListener('click', () => {
-  dinamicBoard(inputSize.valueAsNumber);
+  containerBoard.innerHTML = '';
+  validCreate(inputSize.value);
 });
+
+// Crédito ao auxilio de lógica da Ju Barcelos && Brunão && Christian && Fumagalli.

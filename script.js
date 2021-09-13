@@ -56,16 +56,14 @@ let storageColor = 'rgb(0, 0, 0)';
 paletaDeCores.addEventListener('click', (evt) => {
   storageColor = evt.target.style.backgroundColor;
   const classSelected = evt.currentTarget.children;
-  console.dir(classSelected[1].className);
+
   for (let index = 0; index < classSelected.length; index += 1) {
     const item = classSelected[index];
-    if (item.className === 'color selected') {
-      item.classList.remove('selected');
-    }
-    if (item.style.backgroundColor === storageColor) {
-      if (classSelected[index] !== 'color selected') {
-        item.classList.add('selected');
-      }
+    item.classList.remove('selected');
+    if (
+      item.style.backgroundColor === storageColor && classSelected[index] !== 'color selected'
+    ) {
+      item.classList.add('selected');
     }
   }
 });
